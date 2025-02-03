@@ -1,7 +1,9 @@
-package main.java.projeto_recomendacao_jogos.interfaces;
+package projeto_recomendacao_jogos.interfaces;
+
+import java.util.List;
 
 public interface Recomendacao {
     public void ordenar();
-    public void filtrarJogos();
-    public void getListaRecomendados();
+    public List<Conteudo> filtrarJogos(Object e);
+    public List<Conteudo> getListaRecomendados();
 }

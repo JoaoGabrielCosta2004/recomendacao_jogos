@@ -1,4 +1,4 @@
-package main.java.projeto_recomendacao_jogos.interfaces;
+package projeto_recomendacao_jogos.interfaces;
 
 public interface Avaliacao {
     public void addAvaliacao();
