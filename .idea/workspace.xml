@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2f1339f4-7543-4452-a2a9-96b08876a005" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/interfaces/Avaliacao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/interfaces/Conteudo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/interfaces/Recomendacao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/interfaces/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/objetos/Jogo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/objetos/UsuarioCliente.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/projeto_recomendacao_jogos/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recomendacao_jogos/app/src/main/java/projeto_recomendacao_jogos/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recomendacao_jogos/app/src/main/java/projeto_recomendacao_jogos/objetos/UsuarioCliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/recomendacao_jogos/app/src/main/java/projeto_recomendacao_jogos/objetos/UsuarioCliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recomendacao_jogos/app/src/test/java/projeto_recomendacao_jogos/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/recomendacao_jogos/app/src/test/java/projeto_recomendacao_jogos/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/untitled">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/recomendacao_jogos" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2t6FadH0QaCdrXzNpd7rvJUhuQW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "Application.TelaLogin.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/FLY-PC/Desktop/Nova pasta (2)/recomendacao_jogos/app/src/images",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15429688",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.TelaPrincipal">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="projeto_recomendacao_jogos.App" />
+      <module name="Nova pasta (2)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="projeto_recomendacao_jogos.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelaCadastro" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.projeto_recomendacao_jogos.telas.TelaCadastro" />
+      <module name="Nova pasta (2)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.projeto_recomendacao_jogos.telas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelaLogin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.projeto_recomendacao_jogos.telas.TelaLogin" />
+      <module name="Nova pasta (2)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.projeto_recomendacao_jogos.telas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TelaPrincipal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.projeto_recomendacao_jogos.telas.TelaPrincipal" />
+      <module name="Nova pasta (2)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.projeto_recomendacao_jogos.telas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TelaPrincipal" />
+        <item itemvalue="Application.TelaCadastro" />
+        <item itemvalue="Application.TelaLogin" />
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2f1339f4-7543-4452-a2a9-96b08876a005" name="Changes" comment="" />
+      <created>1739664682559</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739664682559</updated>
+    </task>
+    <servers />
+  </component>
+</project>
