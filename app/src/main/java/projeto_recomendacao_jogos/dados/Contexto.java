@@ -2,7 +2,7 @@ package projeto_recomendacao_jogos.dados;
 
 public class Contexto {
     private BancoDeDados dados;
-    public void setEstrategia(BancoDeDados dados){
+    public void setStrategy(BancoDeDados dados){
         this.dados = dados;
     }
     
