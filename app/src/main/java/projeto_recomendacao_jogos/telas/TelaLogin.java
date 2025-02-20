@@ -1,4 +1,4 @@
-package main.java.projeto_recomendacao_jogos.telas;
+package projeto_recomendacao_jogos.telas;
 
 import javax.swing.*;
 import java.awt.*;
