@@ -22,7 +22,7 @@ public class UsuarioCliente implements Usuario{
     }
 
     @Override
-    public void removeJogo() {
+    public void removeJogo(Conteudo conteudo) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'removeJogo'");
     }
