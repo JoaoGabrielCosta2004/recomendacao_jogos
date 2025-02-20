@@ -14,6 +14,7 @@ public class TelaCadastro extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
+        setResizable(false);
 
         getContentPane().setBackground(new Color(30, 30, 30));
 

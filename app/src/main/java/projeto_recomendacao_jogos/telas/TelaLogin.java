@@ -15,6 +15,7 @@ public class TelaLogin extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
+        setResizable(false);
         getContentPane().setBackground(Color.BLACK);
 
         logoLabel = new JLabel();
