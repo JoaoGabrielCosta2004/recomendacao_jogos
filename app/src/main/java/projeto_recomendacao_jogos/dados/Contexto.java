@@ -21,5 +21,4 @@ public class Contexto {
     public void deletar(Object obj) {
         dados.deletar(obj);
     }
-
 }

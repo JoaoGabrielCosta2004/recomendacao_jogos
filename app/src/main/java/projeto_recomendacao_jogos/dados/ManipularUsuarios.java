@@ -1,11 +1,18 @@
 package projeto_recomendacao_jogos.dados;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 public class ManipularUsuarios extends BancoDeDados{
 
     @Override
-    public Object chamar(Object obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'chamar'");
+    public Connection chamar(Object obj) {
+        try {
+            return acessarConexao();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
