@@ -1,0 +1,102 @@
+package projeto_recomendacao_jogos.dados;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import projeto_recomendacao_jogos.interfaces.Conteudo;
+import projeto_recomendacao_jogos.objetos.Jogo;
+
+
+
+public class ManipularJogos extends BancoDeDados{
+
+    @Override
+    public Object ler(Object obj) {
+        String nome;
+        String genero;
+        Date anoLancamento;
+        String produtora;
+            
+        if (obj instanceof Integer id) {
+            String sql = "SELECT id, nome, genero, anolancamento, produtora WHERE id = ?";
+            try (Connection conexao = acessarConexao(); PreparedStatement stmt = conexao.prepareStatement(sql)) {
+                stmt.setInt(1, id);
+                try (ResultSet res = stmt.executeQuery()) {
+                    nome = res.getString("nome");
+                    genero = res.getString("genero");
+                    anoLancamento = res.getDate("anolancamento");
+                    produtora = res.getString("produtora");
+
+                    Jogo dadoJogo = new Jogo(nome, genero, anoLancamento, produtora);
+                    dadoJogo.setID(id);
+                    return dadoJogo;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return null; //arrumar isso aqui depois, adicionar alguma excessão
+        
+    }
+
+    @Override
+    public void criar(Object obj) {
+        if (obj instanceof Conteudo cont) {
+            String sql = "INSERT INTO jogo(nome, genero, anolancamento, produtora) VALUES (?, ?, ?, ?)";
+            try (Connection conexao = acessarConexao()) {
+                PreparedStatement stmt = conexao.prepareStatement(sql);
+                stmt.setString(1, cont.getNome());
+                stmt.setString(2, cont.getGenero());
+                stmt.setDate(3, cont.getAnoLancamento());
+                stmt.setString(4, cont.getProdutora());
+                stmt.executeUpdate();
+
+                try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        cont.setID(generatedKeys.getInt(1));
+                    }
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void atualizar(Object obj) {
+        if (obj instanceof Conteudo cont) {
+            String sql = "UPDATE jogo SET nome = ?, genero = ?, anolancamento = ?, produtora = ? WHERE id = ?";
+            try (Connection conexao = acessarConexao()) {
+                PreparedStatement stmt = conexao.prepareStatement(sql);
+                stmt.setString(1, cont.getNome());
+                stmt.setString(2, cont.getGenero());
+                stmt.setDate(3, cont.getAnoLancamento());
+                stmt.setString(4, cont.getProdutora());
+                stmt.setInt(5, cont.getID());
+                stmt.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void deletar(Object obj) {
+        if (obj instanceof Conteudo cont) {
+            String sql = "DELETE FROM jogo WHERE id = ?";
+            try (Connection conexao = acessarConexao()) {
+                PreparedStatement stmt = conexao.prepareStatement(sql);
+                stmt.setInt(1, cont.getID());
+                stmt.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}

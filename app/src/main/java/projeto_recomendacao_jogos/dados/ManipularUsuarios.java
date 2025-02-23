@@ -3,7 +3,7 @@ package projeto_recomendacao_jogos.dados;
 public class ManipularUsuarios extends BancoDeDados{
 
     @Override
-    public Object chamar(Object obj) {
+    public Object ler(Object obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'chamar'");
     }
