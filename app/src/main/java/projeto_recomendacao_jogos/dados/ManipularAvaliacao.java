@@ -5,7 +5,7 @@ public class ManipularAvaliacao  extends BancoDeDados{
     @Override
     public Object ler(Object obj) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'chamar'");
+        throw new UnsupportedOperationException("Unimplemented method 'ler'");
     }
 
     @Override

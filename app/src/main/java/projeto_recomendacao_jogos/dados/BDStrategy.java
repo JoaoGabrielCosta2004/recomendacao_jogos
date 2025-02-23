@@ -1,6 +1,6 @@
 package projeto_recomendacao_jogos.dados;
 
-public class Contexto {
+public class BDStrategy {
     private BancoDeDados dados;
     public void setStrategy(BancoDeDados dados){
         this.dados = dados;
