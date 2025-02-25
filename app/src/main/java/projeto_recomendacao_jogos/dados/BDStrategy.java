@@ -21,5 +21,4 @@ public class BDStrategy {
     public void deletar(Object obj) {
         dados.deletar(obj);
     }
-
 }
