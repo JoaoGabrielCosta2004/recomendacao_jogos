@@ -27,5 +27,8 @@ jobs:
       - name: Configurar o Gradle
         uses: gradle/actions/setup-gradle@v3
 
+      - name: Dar permissão de execução ao Gradle Wrapper
+        run: chmod +x gradlew
+
       - name: Executar os testes
         run: ./gradlew test
