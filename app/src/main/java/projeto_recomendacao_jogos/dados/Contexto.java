@@ -7,7 +7,7 @@ public class Contexto {
     }
     
     public Object chamar(Object obj) {
-        return dados.chamar(obj);
+        return dados.ler(obj);
     }
 
     public void criar(Object obj) {

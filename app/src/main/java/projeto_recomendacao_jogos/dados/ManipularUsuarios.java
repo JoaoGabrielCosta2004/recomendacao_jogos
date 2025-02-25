@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class ManipularUsuarios extends BancoDeDados{
 
     @Override
-    public Connection chamar(Object obj) {
+    public Connection ler(Object obj) {
         try {
             return acessarConexao();
         } catch (SQLException e) {

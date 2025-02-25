@@ -18,8 +18,22 @@ public class UsuarioLoginTest {
 
     @Test
     void testarLoginComCredenciaisCorretas() throws SQLException {
-        String email = "teste@email.com";
-        String senha = "123456";
+        String email = "aiden_flarestone@example.com";
+        String senha = "redwing2024";
+
+        String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+            ResultSet rs = stmt.executeQuery();
+            assertTrue(rs.next());
+        }
+    }
+
+    @Test
+    void testarLoginComCredenciaisCorretas2() throws SQLException {
+        String email = "jake_embersoul@example.com";
+        String senha = "blazingpath88";
 
         String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {

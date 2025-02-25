@@ -13,7 +13,7 @@ public abstract class BancoDeDados {
         return DriverManager.getConnection(URL, USUARIO, SENHA);
     }
 
-    public abstract Object chamar(Object obj);
+    public abstract Object ler(Object obj);
     public abstract void criar(Object obj);
     public abstract void atualizar(Object obj);
     public abstract void deletar(Object obj);
