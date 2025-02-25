@@ -1,12 +1,12 @@
 package projeto_recomendacao_jogos.dados;
 
-public class BDStrategy {
+public class Contexto {
     private BancoDeDados dados;
     public void setStrategy(BancoDeDados dados){
         this.dados = dados;
     }
     
-    public Object ler(Object obj) {
+    public Object chamar(Object obj) {
         return dados.ler(obj);
     }
 
