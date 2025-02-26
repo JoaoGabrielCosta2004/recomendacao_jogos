@@ -1,13 +1,18 @@
 package projeto_recomendacao_jogos.telas;
 
+import projeto_recomendacao_jogos.validacoes.VerificacaoLogin;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaLogin extends JFrame {
     private JTextField emailField;
     private JPasswordField senhaField;
     private JButton entrarButton, cadastrarButton;
     private JLabel logoLabel;
+    private VerificacaoLogin verificacaoLogin;
 
     public TelaLogin() {
         setTitle("Tela de Login");
@@ -17,6 +22,8 @@ public class TelaLogin extends JFrame {
         setLayout(null);
         setResizable(false);
         getContentPane().setBackground(Color.BLACK);
+
+        verificacaoLogin = new VerificacaoLogin();
 
         logoLabel = new JLabel();
         logoLabel.setBounds(100, 10, 200, 100);
@@ -52,6 +59,36 @@ public class TelaLogin extends JFrame {
         cadastrarButton.setBackground(new Color(0x00FFFF));
         cadastrarButton.setForeground(Color.black);
         add(cadastrarButton);
+
+        entrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                verificarLogin();
+            }
+        });
+    }
+
+    private void verificarLogin() {
+        String email = emailField.getText();
+        String senha = new String(senhaField.getPassword());
+
+        if (email.isEmpty() || senha.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (verificacaoLogin.verificarCredenciais(email, senha)) {
+            JOptionPane.showMessageDialog(this, "Login bem-sucedido!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            abrirProximaTela();
+        } else {
+            JOptionPane.showMessageDialog(this, "E-mail ou senha incorretos.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void abrirProximaTela() {
+        JOptionPane.showMessageDialog(this, "Bem-vindo ao sistema!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        new TelaPrincipal().setVisible(true);
     }
 
     private ImageIcon carregarImagem(String caminho, int largura, int altura) {
