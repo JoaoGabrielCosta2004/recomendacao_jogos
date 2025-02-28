@@ -30,5 +30,11 @@ jobs:
       - name: Dar permissão de execução ao Gradle Wrapper
         run: chmod +x gradlew
 
+      - name: Verificar a versão do Gradle
+        run: ./gradlew --version
+
+      - name: Testar configuração do Gradle
+        run: ./gradlew help
+
       - name: Executar os testes
         run: ./gradlew test
