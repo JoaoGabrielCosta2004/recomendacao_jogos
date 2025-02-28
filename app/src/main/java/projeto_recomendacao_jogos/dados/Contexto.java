@@ -6,8 +6,8 @@ public class Contexto {
         this.dados = dados;
     }
     
-    public Object chamar(Object obj) {
-        return dados.chamar(obj);
+    public Object ler(Object obj) {
+        return dados.ler(obj);
     }
 
     public void criar(Object obj) {

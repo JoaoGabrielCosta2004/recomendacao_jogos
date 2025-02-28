@@ -20,7 +20,7 @@ public class VerificacaoLogin {
     public boolean verificarCredenciais(String email, String senha) {
         String sql = "SELECT senha FROM usuario WHERE email = ?";
 
-        try (Connection conexao = (Connection) contexto.chamar(null);
+        try (Connection conexao = (Connection) contexto.ler(null);
              PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setString(1, email);
