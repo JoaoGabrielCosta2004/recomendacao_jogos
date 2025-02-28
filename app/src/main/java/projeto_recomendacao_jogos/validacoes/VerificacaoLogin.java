@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 public class VerificacaoLogin {
 
+
     private BDStrategy BDStrategy;
 
     public VerificacaoLogin() {
@@ -21,6 +22,7 @@ public class VerificacaoLogin {
         String sql = "SELECT senha FROM usuario WHERE email = ?";
 
         try (Connection conexao = (Connection) BDStrategy.ler(null);
+
              PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
             stmt.setString(1, email);
