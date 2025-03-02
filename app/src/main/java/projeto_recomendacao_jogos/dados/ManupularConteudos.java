@@ -26,6 +26,4 @@ public class ManupularConteudos extends BancoDeDados{
         throw new UnsupportedOperationException("Unimplemented method 'deletar'");
     }
 
-    
-
 }

@@ -1,5 +1,9 @@
 package projeto_recomendacao_jogos.telas;
 
+import projeto_recomendacao_jogos.dados.ManipularUsuarios;
+import projeto_recomendacao_jogos.objetos.Usuario;
+import projeto_recomendacao_jogos.validacoes.ValidacoesCadastramento;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -65,6 +69,41 @@ public class TelaCadastro extends JFrame {
         voltarButton.setBackground(new Color(255, 69, 0));
         voltarButton.setForeground(Color.black);
         add(voltarButton);
+
+        cadastrarButton.addActionListener(e -> {
+            String nickname = nomeField.getText().trim();
+            String email = emailField.getText().trim();
+            String senha = new String(senhaField.getPassword()).trim();
+
+            ValidacoesCadastramento validacoes = new ValidacoesCadastramento();
+            if (!validacoes.validarCampos(nickname, email, senha)) {
+                JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!validacoes.validarEmail(email)) {
+                JOptionPane.showMessageDialog(null, "Email inválido.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (validacoes.verificarEmailExistente(email)) {
+                JOptionPane.showMessageDialog(null, "Este email já está cadastrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (validacoes.verificarNicknameExistente(nickname)) {
+                JOptionPane.showMessageDialog(null, "Este nickname já está em uso.", "Erro", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            ManipularUsuarios manipulador = new ManipularUsuarios();
+            Usuario novoUsuario = new Usuario(nickname, email, senha);
+            manipulador.criar(novoUsuario);
+
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+            new TelaLogin().setVisible(true);
+        });
     }
 
     public static void main(String[] args) {
