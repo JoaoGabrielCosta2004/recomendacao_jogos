@@ -48,7 +48,8 @@ public class ManipularJogos extends BancoDeDados{
         List<String> jogos = new ArrayList<>();
         String sql = "SELECT nome FROM jogo WHERE LOWER(nome) LIKE LOWER(?)";
 
-        try (Connection conexao = acessarConexao(); PreparedStatement stmt = conexao.prepareStatement(sql)) {
+        try (Connection conexao = acessarConexao();
+             PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, termo + "%");
             try (ResultSet res = stmt.executeQuery()) {
                 while (res.next()) {
@@ -119,4 +120,26 @@ public class ManipularJogos extends BancoDeDados{
             }
         }
     }
+
+    public int obterIdJogoPorNome(String nomeJogo) {
+        int idJogo = -1;
+        String sql = "SELECT id FROM jogo WHERE nome = ?";
+
+        try (Connection conexao = acessarConexao();
+             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+            stmt.setString(1, nomeJogo);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                idJogo = rs.getInt("id");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return idJogo;
+    }
+
 }
