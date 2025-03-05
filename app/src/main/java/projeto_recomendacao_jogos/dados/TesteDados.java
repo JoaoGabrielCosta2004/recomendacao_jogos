@@ -6,7 +6,7 @@ import java.sql.*;
 public class TesteDados {
     public static void main(String[] args) {
         // Criação do contexto e do jogo
-        BDStrategy context = new BDStrategy();
+        AcessoDados context = new AcessoDados();
         
         // Criando o novo jogo com java.sql.Date
         Date dataLancamento = Date.valueOf("2021-03-26");  // Utilizando Date.valueOf() para criar uma data SQL

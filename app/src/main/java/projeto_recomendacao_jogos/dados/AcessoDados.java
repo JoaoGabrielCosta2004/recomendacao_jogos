@@ -1,6 +1,9 @@
 package projeto_recomendacao_jogos.dados;
 
-public class BDStrategy {
+public class AcessoDados {
+    //mudar o nome dessa classe
+
+    
     private BancoDeDados dados;
     public void setStrategy(BancoDeDados dados){
         this.dados = dados;

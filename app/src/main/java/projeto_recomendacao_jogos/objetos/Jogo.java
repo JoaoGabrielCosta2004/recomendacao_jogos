@@ -30,12 +30,6 @@ public class Jogo implements Conteudo{
     }
 
     @Override
-    public Integer getAvaliacao() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAvaliacao'");
-    }
-
-    @Override
     public String getNome() {
         return nome;
     }
@@ -65,6 +59,11 @@ public class Jogo implements Conteudo{
     }
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    @Override
+    public String toString(){
+        return nome + " | " + anoLancamento + " | " + produtora + " | " + genero;
     }
 
 }

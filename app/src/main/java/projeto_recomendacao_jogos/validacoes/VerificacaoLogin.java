@@ -1,6 +1,6 @@
 package projeto_recomendacao_jogos.validacoes;
 
-import projeto_recomendacao_jogos.dados.BDStrategy;
+import projeto_recomendacao_jogos.dados.AcessoDados;
 import projeto_recomendacao_jogos.dados.ManipularUsuarios;
 
 import java.sql.Connection;
@@ -10,10 +10,10 @@ import java.sql.SQLException;
 
 public class VerificacaoLogin {
 
-    private BDStrategy contexto;
+    private AcessoDados contexto;
 
     public VerificacaoLogin() {
-        this.contexto = new BDStrategy();
+        this.contexto = new AcessoDados();
         this.contexto.setStrategy(new ManipularUsuarios());
     }
 

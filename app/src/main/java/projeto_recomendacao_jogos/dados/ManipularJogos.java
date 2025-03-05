@@ -23,7 +23,7 @@ public class ManipularJogos extends BancoDeDados{
         String produtora;
             
         if (obj instanceof Integer id) {
-            String sql = "SELECT id, nome, genero, anolancamento, produtora WHERE id = ?";
+            String sql = "SELECT id, nome, genero, anolancamento, produtora FROM jogo WHERE id = ?";
             try (Connection conexao = acessarConexao(); PreparedStatement stmt = conexao.prepareStatement(sql)) {
                 stmt.setInt(1, id);
                 try (ResultSet res = stmt.executeQuery()) {
