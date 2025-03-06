@@ -1,5 +1,25 @@
 package projeto_recomendacao_jogos.objetos;
 
-public class Avaliacao {
+import projeto_recomendacao_jogos.interfaces.IAvaliacao;
+
+public class Avaliacao implements IAvaliacao{
+    private int idJogo;
+    private String emailUsuario;
+    private boolean gostei;
+    private String comentario;
+    public Avaliacao(int idJogo, String emailUsuario, boolean gostei){
+        this.idJogo = idJogo;
+        this.emailUsuario = emailUsuario;
+        this.gostei = gostei;
+    }
+    @Override
+    public Boolean retornarAvaliacao() {
+        return gostei;
+    }
+    @Override
+    public void editComentario() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'editComentario'");
+    }
 
 }

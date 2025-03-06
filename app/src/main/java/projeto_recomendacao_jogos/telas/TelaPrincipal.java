@@ -1,6 +1,5 @@
 package projeto_recomendacao_jogos.telas;
 
-import projeto_recomendacao_jogos.dados.AcessoDados;
 import projeto_recomendacao_jogos.dados.ManipularJogos;
 import projeto_recomendacao_jogos.dados.ManipularListaDesejos;
 import projeto_recomendacao_jogos.dados.ManipularMeusJogos;

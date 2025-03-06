@@ -1,6 +1,8 @@
 package projeto_recomendacao_jogos.interfaces;
 
-public interface Avaliacao {
-    public void addAvaliacao();
-    public void retornarAvaliacao();
+public interface IAvaliacao {
+    public Boolean retornarAvaliacao();
+    public void editComentario();
+    public String getComentario();
+    
 }
