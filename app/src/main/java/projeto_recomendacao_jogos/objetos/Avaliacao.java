@@ -17,9 +17,21 @@ public class Avaliacao implements IAvaliacao{
         return gostei;
     }
     @Override
-    public void editComentario() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'editComentario'");
+    public void editComentario(String comentario) {
+        this.comentario = comentario;
     }
+    @Override
+    public String getComentario() {
+        return comentario;
+    }
+
+    public int getIdJogo(){
+        return idJogo;
+    }
+
+    public String getEmailUsuario(){
+        return emailUsuario;
+    }
+    
 
 }
