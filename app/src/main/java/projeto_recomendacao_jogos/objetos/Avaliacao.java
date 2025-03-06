@@ -32,6 +32,4 @@ public class Avaliacao implements IAvaliacao{
     public String getEmailUsuario(){
         return emailUsuario;
     }
-    
-
 }

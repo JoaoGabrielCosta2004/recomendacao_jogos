@@ -2,9 +2,11 @@ package projeto_recomendacao_jogos.objetos;
 
 import java.sql.Date;
 
-import projeto_recomendacao_jogos.interfaces.Conteudo;
+import projeto_recomendacao_jogos.interfaces.IConteudo;
 
-public class Jogo implements Conteudo{
+
+
+public class Jogo implements IConteudo{
     Integer id;
     String nome;
     String genero;

@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import projeto_recomendacao_jogos.interfaces.Conteudo;
+import projeto_recomendacao_jogos.interfaces.IConteudo;
 import projeto_recomendacao_jogos.objetos.Jogo;
 
 
@@ -64,7 +64,7 @@ public class ManipularJogos extends BancoDeDados{
 
     @Override
     public void criar(Object obj) {
-        if (obj instanceof Conteudo cont) {
+        if (obj instanceof IConteudo cont) {
             String sql = "INSERT INTO jogo(nome, genero, anolancamento, produtora) VALUES (?, ?, ?, ?)";
             try (Connection conexao = acessarConexao()) {
                 PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -88,7 +88,7 @@ public class ManipularJogos extends BancoDeDados{
 
     @Override
     public void atualizar(Object obj) {
-        if (obj instanceof Conteudo cont) {
+        if (obj instanceof IConteudo cont) {
             String sql = "UPDATE jogo SET nome = ?, genero = ?, anolancamento = ?, produtora = ? WHERE id = ?";
             try (Connection conexao = acessarConexao()) {
                 PreparedStatement stmt = conexao.prepareStatement(sql);
@@ -107,7 +107,7 @@ public class ManipularJogos extends BancoDeDados{
 
     @Override
     public void deletar(Object obj) {
-        if (obj instanceof Conteudo cont) {
+        if (obj instanceof IConteudo cont) {
             String sql = "DELETE FROM jogo WHERE id = ?";
             try (Connection conexao = acessarConexao()) {
                 PreparedStatement stmt = conexao.prepareStatement(sql);
