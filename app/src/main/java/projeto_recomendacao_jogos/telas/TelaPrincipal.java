@@ -31,6 +31,8 @@ public class TelaPrincipal extends JFrame {
     private ManipularListaJogos manipularListaJogos;
 
     public TelaPrincipal(String email) {
+        this.email = email;
+
         setTitle("Biblioteca de Jogos");
         setSize(600, 500);
         setMinimumSize(new Dimension(500, 400));
@@ -41,6 +43,7 @@ public class TelaPrincipal extends JFrame {
 
         manipuladorJogos = new ManipularJogos();
         ManipularUsuarios manipuladorUsuarios = new ManipularUsuarios();
+        manipularListaJogos = new ManipularListaJogos();
 
         JPanel painelSuperior = new JPanel(new BorderLayout());
         painelSuperior.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -63,7 +66,7 @@ public class TelaPrincipal extends JFrame {
         nicknameLabel = new JLabel();
         nicknameLabel.setForeground(Color.WHITE);
 
-        // Buscar o nickname do usuário com base no e-mail fornecido
+
         String nickname = manipuladorUsuarios.buscarNicknamePorEmail(email);
         if (nickname != null) {
             nicknameLabel.setText("Usuário: " + nickname);
@@ -208,7 +211,6 @@ public class TelaPrincipal extends JFrame {
     private void adicionarJogo(String nomeJogo) {
         if (nomeJogo != null) {
             int idJogo = manipuladorJogos.obterIdJogoPorNome(nomeJogo);
-
             if (idJogo != -1) {
                 int opcao = JOptionPane.showOptionDialog(
                         this,
@@ -222,7 +224,7 @@ public class TelaPrincipal extends JFrame {
                 );
 
                 if (opcao == JOptionPane.YES_OPTION) {
-                    manipularListaJogos.adicionarJogoPossuido(email, idJogo);  // Aqui, o email precisa ser obtido de algum lugar
+                    manipularListaJogos.adicionarJogoPossuido(email, idJogo);
                 } else if (opcao == JOptionPane.NO_OPTION) {
                     manipularListaJogos.adicionarJogoListaDesejos(email, idJogo);
                 }
