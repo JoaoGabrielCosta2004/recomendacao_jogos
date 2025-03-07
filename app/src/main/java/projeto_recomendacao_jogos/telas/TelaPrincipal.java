@@ -117,6 +117,8 @@ public class TelaPrincipal extends JFrame {
 
         add(painelInferior, BorderLayout.SOUTH);
 
+        atualizarExibicaoListas();
+
         alternarListaButton.addActionListener(e -> alternarLista());
 
         pesquisaField.addKeyListener(new KeyAdapter() {
@@ -182,6 +184,19 @@ public class TelaPrincipal extends JFrame {
     private void atualizarExibicaoListas() {
         painelCentral.removeAll();
         int larguraTela = getWidth();
+
+        modeloLista.clear();
+        modeloListaDesejos.clear();
+
+        List<String> jogosUsuario = manipuladorJogos.buscarJogosUsuario(email);
+        for (String jogo : jogosUsuario) {
+            modeloLista.addElement(jogo);
+        }
+
+        List<String> desejosUsuario = manipuladorJogos.buscarListaDesejos(email);
+        for (String desejo : desejosUsuario) {
+            modeloListaDesejos.addElement(desejo);
+        }
 
         if (larguraTela > 700) {
             painelCentral.setLayout(new GridLayout(1, 2));
