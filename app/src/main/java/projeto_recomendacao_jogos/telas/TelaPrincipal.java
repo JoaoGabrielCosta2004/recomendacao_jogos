@@ -5,6 +5,10 @@ import projeto_recomendacao_jogos.dados.ManipularListaDesejos;
 import projeto_recomendacao_jogos.dados.ManipularMeusJogos;
 import projeto_recomendacao_jogos.objetos.Jogo;
 
+import projeto_recomendacao_jogos.dados.ManipularListaJogos;
+import projeto_recomendacao_jogos.dados.ManipularUsuarios;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -23,15 +27,16 @@ public class TelaPrincipal extends JFrame {
     private final JList<String> listaJogosUsuario;
     private final DefaultListModel<String> modeloLista;
     private final JList<String> listaDesejos;
+    private JLabel nicknameLabel;
     private final DefaultListModel<String> modeloListaDesejos;
     private final JPanel painelCentral;
     private boolean mostrandoListaJogos = true;
     private ManipularJogos manipuladorJogos;
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     private String email;
+    private ManipularListaJogos manipularListaJogos;
 
     public TelaPrincipal(String email) {
-        this.email = email;
         setTitle("Biblioteca de Jogos");
         setSize(600, 500);
         setMinimumSize(new Dimension(500, 400));
@@ -41,6 +46,7 @@ public class TelaPrincipal extends JFrame {
         getContentPane().setBackground(Color.DARK_GRAY);
 
         manipuladorJogos = new ManipularJogos();
+        ManipularUsuarios manipuladorUsuarios = new ManipularUsuarios();
 
         JPanel painelSuperior = new JPanel(new BorderLayout());
         painelSuperior.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -60,7 +66,19 @@ public class TelaPrincipal extends JFrame {
 
         add(painelSuperior, BorderLayout.NORTH);
 
-        // Painel central (Listas de jogos)
+        nicknameLabel = new JLabel();
+        nicknameLabel.setForeground(Color.WHITE);
+
+        // Buscar o nickname do usuário com base no e-mail fornecido
+        String nickname = manipuladorUsuarios.buscarNicknamePorEmail(email);
+        if (nickname != null) {
+            nicknameLabel.setText("Usuário: " + nickname);
+        } else {
+            nicknameLabel.setText("Usuário não encontrado");
+        }
+
+        painelSuperior.add(nicknameLabel, BorderLayout.EAST);
+
         painelCentral = new JPanel(new BorderLayout());
         painelCentral.setBackground(Color.DARK_GRAY);
 
@@ -85,7 +103,6 @@ public class TelaPrincipal extends JFrame {
         painelCentral.add(scrollJogos, BorderLayout.CENTER);
         add(painelCentral, BorderLayout.CENTER);
 
-        // Painel inferior (botões)
         JPanel painelInferior = new JPanel(new FlowLayout());
         painelInferior.setBackground(Color.DARK_GRAY);
 
@@ -124,6 +141,20 @@ public class TelaPrincipal extends JFrame {
             }
         });
 
+        listaPesquisa.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) adicionarJogo(listaPesquisa.getSelectedValue());
+            }
+        });
+
+        listaPesquisa.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) adicionarJogo(listaPesquisa.getSelectedValue());
+            }
+        });
+
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent evt) {
@@ -136,9 +167,7 @@ public class TelaPrincipal extends JFrame {
 
     private void ajustarLayout() {
         int larguraTela = getWidth();
-
         scrollPesquisa.setBounds(10, pesquisaField.getHeight() + 10, larguraTela - 20, 100);
-
         atualizarExibicaoListas();
     }
 
@@ -165,7 +194,6 @@ public class TelaPrincipal extends JFrame {
         int larguraTela = getWidth();
 
         if (larguraTela > 700) {
-
             painelCentral.setLayout(new GridLayout(1, 2));
 
             JScrollPane scrollJogos = new JScrollPane(listaJogosUsuario);
@@ -177,7 +205,6 @@ public class TelaPrincipal extends JFrame {
             painelCentral.add(scrollJogos);
             painelCentral.add(scrollDesejos);
         } else {
-
             painelCentral.setLayout(new BorderLayout());
 
             JScrollPane scrollPane = mostrandoListaJogos ? new JScrollPane(listaJogosUsuario) : new JScrollPane(listaDesejos);
@@ -189,6 +216,7 @@ public class TelaPrincipal extends JFrame {
         painelCentral.revalidate();
         painelCentral.repaint();
     }
+
 
     
     private List preencherPainelDesejos(){
@@ -202,6 +230,32 @@ public class TelaPrincipal extends JFrame {
         }
 
         return listaDesejos;
+
+    private void adicionarJogo(String nomeJogo) {
+        if (nomeJogo != null) {
+            int idJogo = manipuladorJogos.obterIdJogoPorNome(nomeJogo);
+
+            if (idJogo != -1) {
+                int opcao = JOptionPane.showOptionDialog(
+                        this,
+                        "Deseja adicionar '" + nomeJogo + "' à lista de jogos possuídos ou à lista de desejos?",
+                        "Adicionar Jogo",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        new String[]{"Jogos Possuídos", "Lista de Desejos"},
+                        "Jogos Possuídos"
+                );
+
+                if (opcao == JOptionPane.YES_OPTION) {
+                    manipularListaJogos.adicionarJogoPossuido(email, idJogo);  // Aqui, o email precisa ser obtido de algum lugar
+                } else if (opcao == JOptionPane.NO_OPTION) {
+                    manipularListaJogos.adicionarJogoListaDesejos(email, idJogo);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao encontrar o jogo no banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     private List preencherPainelMeusJogos(){

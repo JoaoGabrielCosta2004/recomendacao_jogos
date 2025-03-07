@@ -60,12 +60,7 @@ public class TelaLogin extends JFrame {
         cadastrarButton.setForeground(Color.black);
         add(cadastrarButton);
 
-        entrarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                verificarLogin();
-            }
-        });
+        entrarButton.addActionListener(e -> verificarLogin());
     }
 
     private void verificarLogin() {
@@ -85,6 +80,7 @@ public class TelaLogin extends JFrame {
             JOptionPane.showMessageDialog(this, "E-mail ou senha incorretos.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     private void abrirProximaTela(String email) {
         JOptionPane.showMessageDialog(this, "Bem-vindo ao sistema!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
