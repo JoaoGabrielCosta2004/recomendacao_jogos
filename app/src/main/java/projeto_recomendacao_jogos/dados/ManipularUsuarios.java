@@ -65,6 +65,9 @@ public class ManipularUsuarios extends BancoDeDados {
         return false;
     }
 
+
+
+
     @Override
     public void atualizar(Object obj) {
         throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
@@ -74,4 +77,29 @@ public class ManipularUsuarios extends BancoDeDados {
     public void deletar(Object obj) {
         throw new UnsupportedOperationException("Unimplemented method 'deletar'");
     }
+
+    public String buscarNicknamePorEmail(String email) {
+        String sql = "SELECT nickname FROM usuario WHERE email = ?";
+
+        try (Connection conn = acessarConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("nickname");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null; // Retorna null caso o usuário não seja encontrado
+    }
+
+
 }
+
+
+
+

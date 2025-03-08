@@ -60,12 +60,7 @@ public class TelaLogin extends JFrame {
         cadastrarButton.setForeground(Color.black);
         add(cadastrarButton);
 
-        entrarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                verificarLogin();
-            }
-        });
+        entrarButton.addActionListener(e -> verificarLogin());
     }
 
     private void verificarLogin() {
@@ -79,16 +74,15 @@ public class TelaLogin extends JFrame {
 
         if (verificacaoLogin.verificarCredenciais(email, senha)) {
             JOptionPane.showMessageDialog(this, "Login bem-sucedido!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-            abrirProximaTela();
+            abrirTelaPrincipal(email);
         } else {
             JOptionPane.showMessageDialog(this, "E-mail ou senha incorretos.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void abrirProximaTela() {
-        JOptionPane.showMessageDialog(this, "Bem-vindo ao sistema!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-        new TelaPrincipal().setVisible(true);
+    private void abrirTelaPrincipal(String emailUsuario) {
+        this.dispose();
+        new TelaPrincipal(emailUsuario).setVisible(true);
     }
 
     private ImageIcon carregarImagem(String caminho, int largura, int altura) {
