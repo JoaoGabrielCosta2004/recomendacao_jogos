@@ -180,4 +180,31 @@ public class ManipularJogos extends BancoDeDados{
         return desejos;
     }
 
+
+
+    public String buscarInformacoesJogo(String nomeJogo) {
+        StringBuilder resultado = new StringBuilder();
+        String sql = "SELECT genero, produtora, anolancamento FROM jogo WHERE nome = ?";
+
+        try (Connection conn = acessarConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, nomeJogo);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                resultado.append("Nome: ").append(nomeJogo).append("\n")
+                        .append("Gênero: ").append(rs.getString("genero")).append("\n")
+                        .append("Produtora: ").append(rs.getString("produtora")).append("\n")
+                        .append("Ano de Lançamento: ").append(rs.getDate("anolancamento")).append("\n");
+            } else {
+                resultado.append("Informações não encontradas.");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            resultado.append("Erro ao buscar informações.");
+        }
+
+        return resultado.toString();
+    }
 }

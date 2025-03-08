@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ec96cef-6bb5-4a44-b8c5-8a7ac304389c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Nova pasta (2).iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/untitled.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/untitled.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/dados/ManipularJogos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/dados/ManipularJogos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/dados/ManipularUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/dados/ManipularUsuarios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/telas/TelaLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/telas/TelaLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/telas/TelaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/projeto_recomendacao_jogos/telas/TelaPrincipal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,29 +46,29 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2tsTWEBwUn6Y7ybekMDZztBaqIj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.recomendacao_jogos:app [:app:projeto_recomendacao_jogos.telas.TelaLogin.main()].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "manipulandoPesquisasJogos",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/P/recomendacao_jogos",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.recomendacao_jogos:app [:app:projeto_recomendacao_jogos.telas.TelaLogin.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mostrarLista&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/P/recomendacao_jogos&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="TelaLogin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="projeto_recomendacao_jogos.telas.TelaLogin" />
@@ -113,6 +106,8 @@
       <option name="presentableId" value="Default" />
       <updated>1741139812069</updated>
       <workItem from="1741139813140" duration="14794000" />
+      <workItem from="1741387875521" duration="5456000" />
+      <workItem from="1741464925998" duration="2931000" />
     </task>
     <servers />
   </component>

@@ -12,15 +12,15 @@ import java.util.concurrent.*;
 
 public class TelaPrincipal extends JFrame {
     private final JTextField pesquisaField;
-    private final JList<String> listaPesquisa;
+    private final JList<String> listaPesquisa; //
     private final DefaultListModel<String> modeloPesquisa;
     private final JScrollPane scrollPesquisa;
     private final JButton novaRecomendacaoButton;
     private final JButton logoutButton;
     private final JButton alternarListaButton;
-    private final JList<String> listaJogosUsuario;
+    private final JList<String> listaJogosUsuario; //
     private final DefaultListModel<String> modeloLista;
-    private final JList<String> listaDesejos;
+    private final JList<String> listaDesejos; //
     private JLabel nicknameLabel;
     private final DefaultListModel<String> modeloListaDesejos;
     private final JPanel painelCentral;
@@ -117,6 +117,10 @@ public class TelaPrincipal extends JFrame {
 
         add(painelInferior, BorderLayout.SOUTH);
 
+
+        adicionarEventoCliqueDireito(listaJogosUsuario);
+        adicionarEventoCliqueDireito(listaDesejos);
+        adicionarEventoCliqueDireito(listaPesquisa);
         atualizarExibicaoListas();
 
         alternarListaButton.addActionListener(e -> alternarLista());
@@ -155,6 +159,22 @@ public class TelaPrincipal extends JFrame {
         });
 
         atualizarExibicaoListas();
+    }
+
+    private void adicionarEventoCliqueDireito(JList<String> lista) {
+        lista.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (SwingUtilities.isRightMouseButton(e)) {
+                    int index = lista.locationToIndex(e.getPoint());
+                    if (index != -1) {
+                        lista.setSelectedIndex(index);
+                        String nomeJogo = lista.getSelectedValue();
+                        exibirInformacoesJogo(nomeJogo);
+                    }
+                }
+            }
+        });
     }
 
     private void ajustarLayout() {
@@ -222,6 +242,13 @@ public class TelaPrincipal extends JFrame {
         painelCentral.revalidate();
         painelCentral.repaint();
     }
+
+    private void exibirInformacoesJogo(String nomeJogo) {
+        ManipularJogos manipulador = new ManipularJogos();
+        String info = manipulador.buscarInformacoesJogo(nomeJogo);
+        JOptionPane.showMessageDialog(null, info, "Informações do Jogo", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 
     private void adicionarJogo(String nomeJogo) {
         if (nomeJogo != null) {
