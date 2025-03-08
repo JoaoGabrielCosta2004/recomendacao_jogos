@@ -1,6 +1,6 @@
 package projeto_recomendacao_jogos.dados;
  
- public class AcessoDados {
+ public class BDStrategy {
      //mudar o nome dessa classe
  
      
