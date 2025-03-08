@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
-import projeto_recomendacao_jogos.interfaces.IAvaliacao;
 
 public class ManipularAvaliacao  extends BancoDeDados{
 

@@ -16,11 +16,9 @@ public class Avaliacao implements IAvaliacao{
     public Boolean retornarAvaliacao() {
         return gostei;
     }
-    @Override
     public void editComentario(String comentario) {
         this.comentario = comentario;
     }
-    @Override
     public String getComentario() {
         return comentario;
     }

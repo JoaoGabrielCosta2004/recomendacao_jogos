@@ -1,7 +1,7 @@
 package projeto_recomendacao_jogos.recomendacao;
 
+import projeto_recomendacao_jogos.interfaces.IConteudo;
 import projeto_recomendacao_jogos.interfaces.IRecomendacao;
-import projeto_recomendacao_jogos.objetos.Conteudo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,9 +24,9 @@ public class Recomendador implements IRecomendacao{
     }
 
     @Override
-    public Conteudo getRecomendacao() {
+    public IConteudo getRecomendacao() {
         int idJogo = getRandomJogoRecomendado(emailUsuario); 
-        return (Conteudo) manipuladorJogos.ler(idJogo);
+        return (IConteudo) manipuladorJogos.ler(idJogo);
     }
 
     public Integer getRandomJogoRecomendado(String emailAvaliador){

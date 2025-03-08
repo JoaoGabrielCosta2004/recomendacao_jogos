@@ -142,4 +142,42 @@ public class ManipularJogos extends BancoDeDados{
         return idJogo;
     }
 
+    public List<String> buscarJogosUsuario(String email) {
+        List<String> jogos = new ArrayList<>();
+        String sql = "SELECT j.nome FROM usuariojogos uj JOIN jogo j ON uj.idjogo = j.id WHERE uj.emailusuario = ?";
+
+        try (Connection conexao = acessarConexao();
+             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                jogos.add(rs.getString("nome"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return jogos;
+    }
+
+    public List<String> buscarListaDesejos(String email) {
+        List<String> desejos = new ArrayList<>();
+        String sql = "SELECT j.nome FROM listadesejos ld JOIN jogo j ON ld.idjogo = j.id WHERE ld.emailusuario = ?";
+
+        try (Connection conexao = acessarConexao();
+             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                desejos.add(rs.getString("nome"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return desejos;
+    }
+
 }

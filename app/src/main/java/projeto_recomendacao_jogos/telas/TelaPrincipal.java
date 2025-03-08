@@ -1,18 +1,12 @@
 package projeto_recomendacao_jogos.telas;
 
 import projeto_recomendacao_jogos.dados.ManipularJogos;
-import projeto_recomendacao_jogos.dados.ManipularListaDesejos;
-import projeto_recomendacao_jogos.dados.ManipularMeusJogos;
-import projeto_recomendacao_jogos.objetos.Jogo;
-
 import projeto_recomendacao_jogos.dados.ManipularListaJogos;
 import projeto_recomendacao_jogos.dados.ManipularUsuarios;
-
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -31,12 +25,14 @@ public class TelaPrincipal extends JFrame {
     private final DefaultListModel<String> modeloListaDesejos;
     private final JPanel painelCentral;
     private boolean mostrandoListaJogos = true;
-    private ManipularJogos manipuladorJogos;
+    private final ManipularJogos manipuladorJogos;
     private final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
     private String email;
     private ManipularListaJogos manipularListaJogos;
 
     public TelaPrincipal(String email) {
+        this.email = email;
+
         setTitle("Biblioteca de Jogos");
         setSize(600, 500);
         setMinimumSize(new Dimension(500, 400));
@@ -47,6 +43,7 @@ public class TelaPrincipal extends JFrame {
 
         manipuladorJogos = new ManipularJogos();
         ManipularUsuarios manipuladorUsuarios = new ManipularUsuarios();
+        manipularListaJogos = new ManipularListaJogos();
 
         JPanel painelSuperior = new JPanel(new BorderLayout());
         painelSuperior.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -69,7 +66,7 @@ public class TelaPrincipal extends JFrame {
         nicknameLabel = new JLabel();
         nicknameLabel.setForeground(Color.WHITE);
 
-        // Buscar o nickname do usuário com base no e-mail fornecido
+
         String nickname = manipuladorUsuarios.buscarNicknamePorEmail(email);
         if (nickname != null) {
             nicknameLabel.setText("Usuário: " + nickname);
@@ -83,18 +80,12 @@ public class TelaPrincipal extends JFrame {
         painelCentral.setBackground(Color.DARK_GRAY);
 
         modeloLista = new DefaultListModel<>();
-        for (Object jogo : preencherPainelMeusJogos()) {
-            modeloLista.addElement(jogo.toString());
-        }
         listaJogosUsuario = new JList<>(modeloLista);
         JScrollPane scrollJogos = new JScrollPane(listaJogosUsuario);
         scrollJogos.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.WHITE), "Seus Jogos"));
         scrollJogos.getViewport().setBackground(Color.DARK_GRAY);
 
         modeloListaDesejos = new DefaultListModel<>();
-        for (Object jogo : preencherPainelDesejos()) {
-            modeloListaDesejos.addElement(jogo.toString());
-        }
         listaDesejos = new JList<>(modeloListaDesejos);
         JScrollPane scrollDesejos = new JScrollPane(listaDesejos);
         scrollDesejos.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.WHITE), "Lista de Desejos"));
@@ -126,6 +117,8 @@ public class TelaPrincipal extends JFrame {
 
         add(painelInferior, BorderLayout.SOUTH);
 
+        atualizarExibicaoListas();
+
         alternarListaButton.addActionListener(e -> alternarLista());
 
         pesquisaField.addKeyListener(new KeyAdapter() {
@@ -156,7 +149,6 @@ public class TelaPrincipal extends JFrame {
         });
 
         addComponentListener(new ComponentAdapter() {
-            @Override
             public void componentResized(ComponentEvent evt) {
                 ajustarLayout();
             }
@@ -193,6 +185,19 @@ public class TelaPrincipal extends JFrame {
         painelCentral.removeAll();
         int larguraTela = getWidth();
 
+        modeloLista.clear();
+        modeloListaDesejos.clear();
+
+        List<String> jogosUsuario = manipuladorJogos.buscarJogosUsuario(email);
+        for (String jogo : jogosUsuario) {
+            modeloLista.addElement(jogo);
+        }
+
+        List<String> desejosUsuario = manipuladorJogos.buscarListaDesejos(email);
+        for (String desejo : desejosUsuario) {
+            modeloListaDesejos.addElement(desejo);
+        }
+
         if (larguraTela > 700) {
             painelCentral.setLayout(new GridLayout(1, 2));
 
@@ -213,28 +218,14 @@ public class TelaPrincipal extends JFrame {
 
             painelCentral.add(scrollPane, BorderLayout.CENTER);
         }
+
         painelCentral.revalidate();
         painelCentral.repaint();
     }
 
-
-    
-    private List preencherPainelDesejos(){
-        ManipularListaDesejos manipuladorDesejos = new ManipularListaDesejos();
-        ManipularJogos manipuladorJogos = new ManipularJogos();
-        ArrayList<Integer> listaIDs = (ArrayList)manipuladorDesejos.ler(email);
-        ArrayList listaDesejos = new ArrayList<>();
-        
-        for (Integer e : listaIDs) {
-            listaDesejos.add(manipuladorJogos.ler(e));
-        }
-
-        return listaDesejos;
-
     private void adicionarJogo(String nomeJogo) {
         if (nomeJogo != null) {
             int idJogo = manipuladorJogos.obterIdJogoPorNome(nomeJogo);
-
             if (idJogo != -1) {
                 int opcao = JOptionPane.showOptionDialog(
                         this,
@@ -248,7 +239,7 @@ public class TelaPrincipal extends JFrame {
                 );
 
                 if (opcao == JOptionPane.YES_OPTION) {
-                    manipularListaJogos.adicionarJogoPossuido(email, idJogo);  // Aqui, o email precisa ser obtido de algum lugar
+                    manipularListaJogos.adicionarJogoPossuido(email, idJogo);
                 } else if (opcao == JOptionPane.NO_OPTION) {
                     manipularListaJogos.adicionarJogoListaDesejos(email, idJogo);
                 }
@@ -257,19 +248,4 @@ public class TelaPrincipal extends JFrame {
             }
         }
     }
-
-    private List preencherPainelMeusJogos(){
-        ManipularMeusJogos manipularMeusJogos = new ManipularMeusJogos();
-        ManipularJogos manipuladorJogos = new ManipularJogos();
-        ArrayList<Integer> listaIDs = (ArrayList)manipularMeusJogos.ler(email);
-        ArrayList<Jogo> listaMeusJogos = new ArrayList<>();
-        
-        for (Integer e : listaIDs) {
-            listaMeusJogos.add((Jogo) manipuladorJogos.ler(e));
-        }
-
-        return listaMeusJogos;
-    }
-
 }
-
