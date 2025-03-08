@@ -2,9 +2,11 @@ package projeto_recomendacao_jogos.objetos;
 
 import java.sql.Date;
 
-import projeto_recomendacao_jogos.interfaces.Conteudo;
+import projeto_recomendacao_jogos.interfaces.IConteudo;
 
-public class Jogo implements Conteudo{
+
+
+public class Jogo implements IConteudo{
     Integer id;
     String nome;
     String genero;
@@ -27,12 +29,6 @@ public class Jogo implements Conteudo{
     @Override
     public void setID(Integer id) {
         this.id = id;
-    }
-
-    @Override
-    public Integer getAvaliacao() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAvaliacao'");
     }
 
     @Override
@@ -65,6 +61,11 @@ public class Jogo implements Conteudo{
     }
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    @Override
+    public String toString(){
+        return nome + " | " + anoLancamento + " | " + produtora + " | " + genero;
     }
 
 }

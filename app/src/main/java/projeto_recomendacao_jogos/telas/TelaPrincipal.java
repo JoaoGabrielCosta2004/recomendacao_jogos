@@ -117,10 +117,10 @@ public class TelaPrincipal extends JFrame {
 
         add(painelInferior, BorderLayout.SOUTH);
 
+
         adicionarEventoCliqueDireito(listaJogosUsuario);
         adicionarEventoCliqueDireito(listaDesejos);
         adicionarEventoCliqueDireito(listaPesquisa);
-
         atualizarExibicaoListas();
 
         alternarListaButton.addActionListener(e -> alternarLista());
@@ -276,4 +276,3 @@ public class TelaPrincipal extends JFrame {
         }
     }
 }
-
