@@ -6,6 +6,8 @@ import projeto_recomendacao_jogos.validacoes.ValidacoesCadastramento;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaCadastro extends JFrame {
     private JTextField nomeField, emailField;
@@ -70,6 +72,10 @@ public class TelaCadastro extends JFrame {
         voltarButton.setForeground(Color.black);
         add(voltarButton);
 
+
+        voltarButton.addActionListener(e -> dispose());
+
+
         cadastrarButton.addActionListener(e -> {
             String nickname = nomeField.getText().trim();
             String email = emailField.getText().trim();
@@ -104,9 +110,6 @@ public class TelaCadastro extends JFrame {
             dispose();
             new TelaLogin().setVisible(true);
         });
-    }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new TelaCadastro().setVisible(true));
     }
 }

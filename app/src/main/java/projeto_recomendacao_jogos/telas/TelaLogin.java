@@ -61,6 +61,7 @@ public class TelaLogin extends JFrame {
         add(cadastrarButton);
 
         entrarButton.addActionListener(e -> verificarLogin());
+        cadastrarButton.addActionListener(e -> abrirTelaCadastro());
     }
 
     private void verificarLogin() {
@@ -83,6 +84,10 @@ public class TelaLogin extends JFrame {
     private void abrirTelaPrincipal(String emailUsuario) {
         this.dispose();
         new TelaPrincipal(emailUsuario).setVisible(true);
+    }
+
+    private void abrirTelaCadastro() {
+        new TelaCadastro().setVisible(true);
     }
 
     private ImageIcon carregarImagem(String caminho, int largura, int altura) {

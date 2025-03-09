@@ -159,6 +159,13 @@ public class TelaPrincipal extends JFrame {
         });
 
         atualizarExibicaoListas();
+
+        logoutButton.addActionListener(e -> abrirTelaLogin());
+    }
+
+    private void abrirTelaLogin() {
+        this.dispose();
+        new TelaLogin().setVisible(true);
     }
 
     private void adicionarEventoCliqueDireito(JList<String> lista) {
