@@ -1,14 +1,37 @@
 package projeto_recomendacao_jogos.telas;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
 import projeto_recomendacao_jogos.dados.ManipularJogos;
 import projeto_recomendacao_jogos.dados.ManipularListaJogos;
 import projeto_recomendacao_jogos.dados.ManipularUsuarios;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.List;
-import java.util.concurrent.*;
 
 public class TelaPrincipal extends JFrame {
     private final JTextField pesquisaField;
@@ -102,6 +125,10 @@ public class TelaPrincipal extends JFrame {
         novaRecomendacaoButton.setForeground(Color.WHITE);
         novaRecomendacaoButton.setPreferredSize(new Dimension(150, 40));
         painelInferior.add(novaRecomendacaoButton);
+        
+        novaRecomendacaoButton.addActionListener(e -> {
+            new TelaRecomendacao(new JFrame(), email).setVisible(true);
+        });
 
         alternarListaButton = new JButton("Alternar Lista");
         alternarListaButton.setBackground(Color.GRAY);
@@ -114,6 +141,11 @@ public class TelaPrincipal extends JFrame {
         logoutButton.setForeground(Color.WHITE);
         logoutButton.setPreferredSize(new Dimension(100, 40));
         painelInferior.add(logoutButton);
+
+        logoutButton.addActionListener(e -> {
+            this.dispose();
+            new TelaLogin().setVisible(true);
+        });
 
         add(painelInferior, BorderLayout.SOUTH);
 

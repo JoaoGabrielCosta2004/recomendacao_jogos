@@ -1,11 +1,18 @@
 package projeto_recomendacao_jogos.telas;
 
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
 import projeto_recomendacao_jogos.dados.ManipularUsuarios;
 import projeto_recomendacao_jogos.objetos.Usuario;
 import projeto_recomendacao_jogos.validacoes.ValidacoesCadastramento;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class TelaCadastro extends JFrame {
     private JTextField nomeField, emailField;
@@ -69,6 +76,11 @@ public class TelaCadastro extends JFrame {
         voltarButton.setBackground(new Color(255, 69, 0));
         voltarButton.setForeground(Color.black);
         add(voltarButton);
+
+        voltarButton.addActionListener(e -> {
+            dispose();
+            new TelaLogin().setVisible(true);
+        });
 
         cadastrarButton.addActionListener(e -> {
             String nickname = nomeField.getText().trim();

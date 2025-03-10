@@ -1,16 +1,24 @@
 package projeto_recomendacao_jogos.telas;
 
+import java.awt.Color;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+
 import projeto_recomendacao_jogos.validacoes.VerificacaoLogin;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class TelaLogin extends JFrame {
-    private JTextField emailField;
-    private JPasswordField senhaField;
-    private JButton entrarButton, cadastrarButton;
+    private final JTextField emailField;
+    private final JPasswordField senhaField;
+    private final JButton entrarButton;
+    private final JButton cadastrarButton;
     private JLabel logoLabel;
     private VerificacaoLogin verificacaoLogin;
 
@@ -61,6 +69,7 @@ public class TelaLogin extends JFrame {
         add(cadastrarButton);
 
         entrarButton.addActionListener(e -> verificarLogin());
+        cadastrarButton.addActionListener(e -> abrirTelaCadastro());
     }
 
     private void verificarLogin() {
@@ -85,6 +94,11 @@ public class TelaLogin extends JFrame {
     private void abrirProximaTela(String email) {
         JOptionPane.showMessageDialog(this, "Bem-vindo ao sistema!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         new TelaPrincipal(email).setVisible(true);
+    }
+
+    private void abrirTelaCadastro(){
+        this.dispose();
+        new TelaCadastro().setVisible(true);
     }
 
     private ImageIcon carregarImagem(String caminho, int largura, int altura) {

@@ -1,18 +1,18 @@
 package projeto_recomendacao_jogos.recomendacao;
 
-import projeto_recomendacao_jogos.interfaces.IConteudo;
-import projeto_recomendacao_jogos.interfaces.IRecomendacao;
-import projeto_recomendacao_jogos.objetos.Jogo;
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.swing.JList;
+
 import projeto_recomendacao_jogos.dados.ManipularAvaliacao;
 import projeto_recomendacao_jogos.dados.ManipularJogos;
+import projeto_recomendacao_jogos.interfaces.IConteudo;
+import projeto_recomendacao_jogos.interfaces.IRecomendacao;
+import projeto_recomendacao_jogos.objetos.Jogo;
 
 public class Recomendador implements IRecomendacao{
     private ManipularAvaliacao manipuladorAvaliacoes;
@@ -31,11 +31,14 @@ public class Recomendador implements IRecomendacao{
         return (Jogo)manipuladorJogos.ler(idJogo);
     }
 
-    public List<Integer> getRecomendacaoFiltrada(List<String> generos, int limite) {
-        if (generos == null || generos.isEmpty()) {
-            return new ArrayList<>();
+    public ArrayList<IConteudo> getRecomendacaoFiltrada(List<String> generos, int limite) {
+        List<Integer> idjogos =  manipuladorJogos.lerPorGenerosMelhorAvaliados(generos, limite);
+        ArrayList listajogos = new ArrayList<>();
+        for (Integer integer : idjogos) {
+            int idJogo = getRandomJogoRecomendado(emailUsuario); 
+            listajogos.add((Jogo)manipuladorJogos.ler(idJogo));
         }
-        return manipuladorJogos.lerPorGenerosMelhorAvaliados(generos, limite);
+        return listajogos;
     }
 
     public Integer getRandomJogoRecomendado(String emailAvaliador){

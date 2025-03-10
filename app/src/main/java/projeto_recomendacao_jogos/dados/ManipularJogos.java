@@ -229,9 +229,12 @@ public class ManipularJogos extends BancoDeDados{
             while (rs.next()) {
                 idsJogos.add(rs.getInt("id"));
             }
+            System.out.println("Está pegando os dados");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
         return idsJogos;
+        
     }
 }
