@@ -28,8 +28,14 @@ public class Recomendador implements IRecomendacao{
     @Override
     public IConteudo getRecomendacao() {
         int idJogo = getRandomJogoRecomendado(emailUsuario); 
-        Jogo jogoRecomendado = (Jogo)manipuladorJogos.ler(idJogo);
-        return jogoRecomendado;
+        return (Jogo)manipuladorJogos.ler(idJogo);
+    }
+
+    public List<Integer> getRecomendacaoFiltrada(List<String> generos, int limite) {
+        if (generos == null || generos.isEmpty()) {
+            return new ArrayList<>();
+        }
+        return manipuladorJogos.lerPorGenerosMelhorAvaliados(generos, limite);
     }
 
     public Integer getRandomJogoRecomendado(String emailAvaliador){

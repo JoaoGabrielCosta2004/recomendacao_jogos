@@ -1,5 +1,6 @@
 package projeto_recomendacao_jogos.dados;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -180,8 +181,6 @@ public class ManipularJogos extends BancoDeDados{
         return desejos;
     }
 
-
-
     public String buscarInformacoesJogo(String nomeJogo) {
         StringBuilder resultado = new StringBuilder();
         String sql = "SELECT genero, produtora, anolancamento FROM jogo WHERE nome = ?";
@@ -206,5 +205,33 @@ public class ManipularJogos extends BancoDeDados{
         }
 
         return resultado.toString();
+    }
+
+    public List<Integer> lerPorGenerosMelhorAvaliados(List<String> generos, int limite) {
+        List<Integer> idsJogos = new ArrayList<>();
+        String sql = """
+            SELECT j.id
+            FROM jogo j
+            JOIN avaliacao a ON j.id = a.idjogo
+            WHERE j.genero = ANY(?)
+            GROUP BY j.id
+            ORDER BY SUM(CASE WHEN a.gostei = TRUE THEN 1 ELSE 0 END) * 1.0 / COUNT(a.gostei) DESC
+            LIMIT ?
+        """;
+    
+        try (Connection conexao = acessarConexao(); PreparedStatement stmt = conexao.prepareStatement(sql)) {
+    
+            Array array = conexao.createArrayOf("text", generos.toArray());
+            stmt.setArray(1, array);
+            stmt.setInt(2, limite);
+    
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                idsJogos.add(rs.getInt("id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idsJogos;
     }
 }
