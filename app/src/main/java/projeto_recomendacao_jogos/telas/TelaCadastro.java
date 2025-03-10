@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 import projeto_recomendacao_jogos.dados.ManipularUsuarios;
 import projeto_recomendacao_jogos.objetos.Usuario;
@@ -118,7 +117,4 @@ public class TelaCadastro extends JFrame {
         });
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new TelaCadastro().setVisible(true));
-    }
 }

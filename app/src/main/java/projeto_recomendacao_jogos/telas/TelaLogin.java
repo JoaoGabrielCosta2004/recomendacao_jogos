@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 import projeto_recomendacao_jogos.validacoes.VerificacaoLogin;
 
@@ -112,7 +111,4 @@ public class TelaLogin extends JFrame {
         return new ImageIcon(imagem);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new TelaLogin().setVisible(true));
-    }
 }
